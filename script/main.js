@@ -18,3 +18,22 @@ let n = -3,
     min = Math.min(n, m)
 
 console.log(Math.round(Math.random() * (max - min)) + min);
+
+
+const password = '_-a'
+
+if(password.length >= 4 && (password.includes('-') || password.includes('_'))){
+  console.log('Пароль надежный!');
+} else {
+  console.log('Пароль шляпа!');
+}
+
+const name = 'Alex',
+      surName = 'Gusakov'
+
+const name1 = name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase()
+
+const surName1 = surName.substring(0, 1).toUpperCase() + surName.substring(1).toLowerCase()
+console.log(name1, surName1);
+
+name === name1 && surName === surName1 ? console.log('Имя осталось без изменений') : console.log('Имя было преобразовано');
