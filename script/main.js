@@ -84,9 +84,27 @@
 //   }   
 // }
 
-const week = ['Понедельник', "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"]
+roadMines = [true, false, false, false, false, false, false, false, false, true] 
+let i = 0
+let leaves = 2
 
-let numbers  = Math.round(Math.random() * (31 - 1)) + 1
-console.log(numbers);
-console.log(numbers % 7);
-console.log(`Сегодня ${numbers} Января, день недели: ${week[(numbers % 7) - 1]}`);
+while (i < roadMines.length){
+  console.log(`Танк переместился на позицию ${i + 1}`);
+
+  if(roadMines[i]){    
+    leaves--   
+    console.log('Танк подбит'); 
+  }  
+  if(leaves === 0){    
+    console.log('Танк убит');   
+    break 
+  }   
+  i++
+}
+
+// const week = ['Понедельник', "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"]
+
+// let numbers  = Math.round(Math.random() * (31 - 1)) + 1
+// console.log(`Сегодня ${numbers} Января, день недели: ${week[(numbers - 1) % 7]}`);
+// console.log(numbers);
+// console.log(numbers % 7);
