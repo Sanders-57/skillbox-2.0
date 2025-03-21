@@ -84,23 +84,23 @@
 //   }   
 // }
 
-roadMines = [true, false, false, false, false, false, false, false, false, true] 
-let i = 0
-let leaves = 2
+// roadMines = [true, false, false, false, false, false, false, false, false, true] 
+// let i = 0
+// let leaves = 2
 
-while (i < roadMines.length){
-  console.log(`Танк переместился на позицию ${i + 1}`);
+// while (i < roadMines.length){
+//   console.log(`Танк переместился на позицию ${i + 1}`);
 
-  if(roadMines[i]){    
-    leaves--   
-    console.log('Танк подбит'); 
-  }  
-  if(leaves === 0){    
-    console.log('Танк убит');   
-    break 
-  }   
-  i++
-}
+//   if(roadMines[i]){    
+//     leaves--   
+//     console.log('Танк подбит'); 
+//   }  
+//   if(leaves === 0){    
+//     console.log('Танк убит');   
+//     break 
+//   }   
+//   i++
+// }
 
 // const week = ['Понедельник', "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"]
 
@@ -108,3 +108,37 @@ while (i < roadMines.length){
 // console.log(`Сегодня ${numbers} Января, день недели: ${week[(numbers - 1) % 7]}`);
 // console.log(numbers);
 // console.log(numbers % 7);
+
+// const checkEmail = (email, blackList) => {
+//   let whiteList = []
+//   for(let i = 0; i < email.length; i++){
+//    if(!blackList.includes(email[i])){
+//     whiteList.push(email[i])
+//    }
+//   }
+//   console.log(whiteList);
+// }
+// checkEmail(['asd@mail.ru', 'qwe@mail.ru', 'zxc@mail.ru', '123@mail.ru', '321@mail.ru'], ['123@mail.ru', '321@mail.ru']);
+
+const saleBasket  = (sum,amount, promo) => {
+  if(sum <= 300 && promo === 'ДАРИМ300'){
+    sum = 0
+  } else if(promo === 'ДАРИМ300'){
+    sum -= 300
+    console.log(`Проммокод ДАРИМ300 ${sum}`);
+  }
+  if(amount >= 10){
+    sum *= 0.95
+    console.log(`товаров в корзине более 10 шт. ${sum}`);
+  }
+  if(sum > 50000){
+    sum = (sum - ((sum - 50000) * 0.2))
+    console.log(`Товаров более чем на 50к ${sum}`);
+  }
+  if(promo === 'СКИДКА15' && sum >= 20000){
+    sum *= 0.85
+    console.log(`Скидка по проммокоду СКИДКА15 ${sum}`);
+  }
+ return sum
+}
+console.log(saleBasket(75000, 20, 'ДАРИМ300'));
