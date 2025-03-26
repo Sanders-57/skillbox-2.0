@@ -166,31 +166,56 @@ let objects = [
 
 
 
-const city = {
-  kazan: 'Казань',
-  ufa: 'Уфа',
-  moscow: 'Москва',
-  peterburg: 'Санкт-Петербург'
-}
+// const city = {
+//   kazan: 'Казань',
+//   ufa: 'Уфа',
+//   moscow: 'Москва',
+//   peterburg: 'Санкт-Петербург'
+// }
 
-let form = document.createElement('form'),
-    label = document.createElement('label'),
-    select = document.createElement('select')
-label.textContent = 'Выберите ваш город'
-label.htmlFor = 'city-select'
-select.id = 'city-select'
-document.body.append(form)
-form.appendChild(label)
-form.appendChild(select)
+// let form = document.createElement('form'),
+//     label = document.createElement('label'),
+//     select = document.createElement('select')
+// label.textContent = 'Выберите ваш город'
+// label.htmlFor = 'city-select'
+// select.id = 'city-select'
+// document.body.append(form)
+// form.appendChild(label)
+// form.appendChild(select)
 
 
-const getCity = (obj) => {
-  let intries = Object.entries(obj)
-  for(let entry of intries){
-    let option = document.createElement('option')
-    option.value = `${entry[0]}`
-    option.textContent = `${entry[1]}`
-    select.appendChild(option)
+// const getCity = (obj) => {
+//   let intries = Object.entries(obj)
+//   for(let entry of intries){
+//     let option = document.createElement('option')
+//     option.value = `${entry[0]}`
+//     option.textContent = `${entry[1]}`
+//     select.appendChild(option)
+//   }
+// }
+// getCity(city)
+const input = document.querySelector('.input'),
+      button = document.querySelector('.button'),
+      div = document.querySelector('.div')
+  let timerId 
+
+
+      
+button.addEventListener('click', function(){
+  let value = parseInt(input.value)
+  if(timerId){
+    clearInterval(timerId)
   }
-}
-getCity(city)
+
+  div.textContent = value
+  
+  timerId = setInterval(function(){ 
+    value-- 
+    div.textContent = value
+    if(value <= 0){
+      clearInterval(timerId)
+      input.value = ''
+    }
+  }, 1000)
+
+})
