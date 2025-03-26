@@ -120,25 +120,77 @@
 // }
 // checkEmail(['asd@mail.ru', 'qwe@mail.ru', 'zxc@mail.ru', '123@mail.ru', '321@mail.ru'], ['123@mail.ru', '321@mail.ru']);
 
-const saleBasket  = (sum,amount, promo) => {
-  if(sum <= 300 && promo === 'ДАРИМ300'){
-    sum = 0
-  } else if(promo === 'ДАРИМ300'){
-    sum -= 300
-    console.log(`Проммокод ДАРИМ300 ${sum}`);
-  }
-  if(amount >= 10){
-    sum *= 0.95
-    console.log(`товаров в корзине более 10 шт. ${sum}`);
-  }
-  if(sum > 50000){
-    sum = (sum - ((sum - 50000) * 0.2))
-    console.log(`Товаров более чем на 50к ${sum}`);
-  }
-  if(promo === 'СКИДКА15' && sum >= 20000){
-    sum *= 0.85
-    console.log(`Скидка по проммокоду СКИДКА15 ${sum}`);
-  }
- return sum
+// const saleBasket  = (sum,amount, promo) => {
+//   if(sum <= 300 && promo === 'ДАРИМ300'){
+//     sum = 0
+//   } else if(promo === 'ДАРИМ300'){
+//     sum -= 300
+//     console.log(`Проммокод ДАРИМ300 ${sum}`);
+//   }
+//   if(amount >= 10){
+//     sum *= 0.95
+//     console.log(`товаров в корзине более 10 шт. ${sum}`);
+//   }
+//   if(sum > 50000){
+//     sum = (sum - ((sum - 50000) * 0.2))
+//     console.log(`Товаров более чем на 50к ${sum}`);
+//   }
+//   if(promo === 'СКИДКА15' && sum >= 20000){
+//     sum *= 0.85
+//     console.log(`Скидка по проммокоду СКИДКА15 ${sum}`);
+//   }
+//  return sum
+// }
+// console.log(saleBasket(75000, 20, 'ДАРИМ300'));
+
+let objects = [
+{ name: 'Василий', surname: 'Васильев' },
+{ name: 'Иван', surname: 'Иванов' },
+{ name: 'Пётр', surname: 'Петров' }
+]
+
+// const getUser = (obj, name, userName) => {
+//   return obj.map(user => {
+//     if(user.name === userName){
+//       // console.log(user);
+//       return user
+//     }
+//   })
+// }
+
+// const getUser = (obj, name, userName) => {
+//   return obj.filter(user => user.name === userName)
+// }
+
+// console.log(getUser(objects, 'name', 'Иван'));
+
+
+
+const city = {
+  kazan: 'Казань',
+  ufa: 'Уфа',
+  moscow: 'Москва',
+  peterburg: 'Санкт-Петербург'
 }
-console.log(saleBasket(75000, 20, 'ДАРИМ300'));
+
+let form = document.createElement('form'),
+    label = document.createElement('label'),
+    select = document.createElement('select')
+label.textContent = 'Выберите ваш город'
+label.htmlFor = 'city-select'
+select.id = 'city-select'
+document.body.append(form)
+form.appendChild(label)
+form.appendChild(select)
+
+
+const getCity = (obj) => {
+  let intries = Object.entries(obj)
+  for(let entry of intries){
+    let option = document.createElement('option')
+    option.value = `${entry[0]}`
+    option.textContent = `${entry[1]}`
+    select.appendChild(option)
+  }
+}
+getCity(city)
