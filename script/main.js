@@ -194,28 +194,40 @@ let objects = [
 //   }
 // }
 // getCity(city)
-const input = document.querySelector('.input'),
-      button = document.querySelector('.button'),
-      div = document.querySelector('.div')
-  let timerId 
+// const input = document.querySelector('.input'),
+//       button = document.querySelector('.button'),
+//       div = document.querySelector('.div')
+//   let timerId 
 
 
       
-button.addEventListener('click', function(){
-  let value = parseInt(input.value)
-  if(timerId){
-    clearInterval(timerId)
-  }
+// button.addEventListener('click', function(){
+//   let value = parseInt(input.value)
+//   if(timerId){
+//     clearInterval(timerId)
+//   }
 
-  div.textContent = value
+//   div.textContent = value
   
-  timerId = setInterval(function(){ 
-    value-- 
-    div.textContent = value
-    if(value <= 0){
-      clearInterval(timerId)
-      input.value = ''
-    }
-  }, 1000)
+//   timerId = setInterval(function(){ 
+//     value-- 
+//     div.textContent = value
+//     if(value <= 0){
+//       clearInterval(timerId)
+//       input.value = ''
+//     }
+//   }, 1000)
+// })
 
-})
+const input = document.querySelector('.input'), 
+      title = document.querySelector('.title')
+
+let timerId
+input.addEventListener('input', ()=> {
+  if(timerId){
+    clearTimeout(timerId)
+  }
+  timerId = setTimeout(() => {
+  title.textContent = input.value  
+}, 300);
+})  
